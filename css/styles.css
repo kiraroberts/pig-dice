@@ -10,9 +10,9 @@ p {
   align-items: center;
 } */
 
-#gameUIShow {
+/* #gameUIShow {
   display: none;
-}
+} */
 
 #holdPlayer1, #holdPlayer2 {
   display: none;

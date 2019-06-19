@@ -16,23 +16,37 @@ function Player2 (tempScore, totalScore) {
 
 
 
-function diceRollPlayer1(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
-};
 
-function diceRollPlayer2(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
-};
 
-// function() {
-//   if diceResultPlayer1 === 1 {
-//     delete temporary score
-//   } else if {
-//     player click roll
-//     diceResultPlayer1 + Player1 temporary score
+function() {
+  function diceRollPlayer1(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  };
+  if diceResultPlayer1 === 1 {
+    delete temporary score
+  } else {
+    player click roll
+    diceResultPlayer1 + Player1 temporary score
+
+  function() {
+    function diceRollPlayer2(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) ) + min;
+    };
+    if diceResultPlayer1 === 1 {
+      delete temporary score
+    } else {
+      player click roll
+      diceResultPlayer1 + Player1 temporary score
+
+
+
+
+
+
+
 //   } else {
 //     player click hold
-//     diceResultPlayer1 + Player1 temporary score + Player1 score
+//     diceResultPlayer1 + Player1 temporary score + Player1 totalscore
 //   }
 // }
 
