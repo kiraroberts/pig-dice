@@ -1,0 +1,36 @@
+body {
+  margin: 25px;
+}
+
+p {
+  font-weight: bold;
+}
+/*
+#diceResult {
+  align-items: center;
+} */
+
+#gameUIShow {
+  display: none;
+}
+
+#holdPlayer1, #holdPlayer2 {
+  display: none;
+}
+
+#mainHeading {
+  text-align: center;
+}
+
+.column {
+  width: 400px;
+  height: 800px;
+  text-align: center;
+  margin-left: 400px;
+  margin-top: 50px;
+}
+
+.panel {
+  border-radius: 10px;
+  margin: 25px;
+}
