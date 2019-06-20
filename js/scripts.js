@@ -11,32 +11,32 @@ function Player (tempScore, totalScore) {
   this.totalScore = totalScore
 };
 
+// This is our PROPERTY (KEY-VALUE PAIR creates a PROPERTY)
 var player1 = new Player(0, 0);
 var player2 = new Player(0, 0);
 
 // This is our PROTOTYPE //
 Player.prototype.roll1 = function() {
   var diceDisplay = diceRollPlayer1(1,6);
+  if (diceDisplay === 1) {
+    this.tempScore = 0
+  } else {
   this.tempScore += diceDisplay
-  $("#displaytempScore1").text(player1.tempScore)
-  return diceDisplay
-    console.log(this);
-
+  // return diceDisplay
+  }
+  $("#displaytempScore1").text(this.tempScore)
 };
 
 Player.prototype.roll2 = function() {
   var diceDisplay = diceRollPlayer2(1,6);
+  if (diceDisplay === 1) {
+    this.tempScore = 0
+  } else {
   this.tempScore += diceDisplay
-  $("#displaytempScore2").text(player2.tempScore)
-  return diceDisplay
-    console.log(this);
-
+  }
+  $("#displaytempScore2").text(this.tempScore)
 };
 
-
-console.log(player1);
-console.log(player1.tempScore)
-console.log(diceRollPlayer1(1,6))
 
 function diceRollPlayer1(min, max) {
   return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -47,26 +47,31 @@ function diceRollPlayer2(min, max) {
 };
 
 // function() {
-//   if diceResultPlayer1 === 1 {
-//     delete temporary score
-//   } else if {
-//     player click roll
-//     diceResultPlayer1 + Player1 temporary score
-//   } else {
-//     player click hold
-//     diceResultPlayer1 + Player1 temporary score + Player1 score
-//   }
 // }
 
 // ------------ Front End --------- //
 
-// This is our PROPERTY (KEY-VALUE PAIR creates a PROPERTY)
 
 
 $(document).ready(function() {
   $().submit(function(event) {
     event.preventDefault();
-
+    //
+    // $("#holdplayer1").click();
+    // if (player1.roll1 === 1) {
+    //   player1.tempScore = 0
+    // } else {
+    //   player1.tempScore += player1.totalScore
+    //   $("#displaytotalScore1").text(player1.totalScore)
+    //   console.log(player1);
+    // }
+    //
+    // $("#holdplayer2").click();
+    // } else {
+    //   player2.tempScore += player2.totalScore
+    //   $("#displaytotalScore2").text(player2.totalScore)
+    //   console.log(player2);
+    // }
   });
 
   $('.btnPlay').click(function() {
