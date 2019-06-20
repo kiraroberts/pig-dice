@@ -13,6 +13,7 @@ PigDiceGame.prototype.addPlayer = function (player) {
 // This is our PROPERTIES //
 var game1 = new PigDiceGame();
 var player1 = new Player(0, 0, "Player 1");
+player1.turn = true;
 var player2 = new Player(0, 0, "Player 2");
 game1.addPlayer(player1);
 game1.addPlayer(player2);
@@ -26,10 +27,10 @@ function Player (tempScore, totalScore, playerId) {
 };
 
 function showScore() {
-  var i = currentPlayer();
-  $('#current-player').text('Current Player: ' + game1.players[i].name);
-  $('span#tempScore').text('Round Score: ' + game1.players[i].tempScore);
-  $('span#totalScore').text('Total Score: ' + game1.players[i].totalScore)
+  // var i = currentPlayer();
+  $('#currentPlayer').text('Current Player: ' + game1.players[i]);
+  $('span#tempScore').text(game1.players[i].tempScore);
+  $('span#totalScore').text(game1.players[i].totalScore)
 };
 
 function currentPlayer() {
@@ -51,11 +52,15 @@ function switchPlayer(i) {
 
 function diceRoll(i) {
   var result = parseInt(Math.random() * 6) + 1;
+  console.log("test");
+  console.log(result);
   if (result === 1) {
     game1.players[i].tempScore = 0;
     game1.players[i].turn = false;
     switchPlayer(i);
+    console.log("test if");
   } else {
+    console.log('test else')
     game1.players[i].tempScore += result;
   }
 };
@@ -73,21 +78,24 @@ function addScore(i) {
       // ------------ Front End --------- //
 
 $(document).ready(function() {
-  $("button#roll").submit(function(event) {
-    event.preventDefault();
-
-  });
 
   $('.btnPlay').click(function() {
     $("#gameUIShow").show();
   });
 
   $('#roll').click(function() {
-    $("#holdPlayer1").show();
+    var i = currentPlayer()
+    showScore(i);
+    diceRoll(i);
+    $("#hold").show();
   });
 
   $('button#hold').click(function( ) {
-    hold;
+    hold(i);
+
+
+
   });
+  $("span#diceRoll").text(diceRoll.result);
 
 });

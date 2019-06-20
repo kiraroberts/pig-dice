@@ -14,7 +14,7 @@ p {
   display: none;
 } */
 
-#holdPlayer1, #holdPlayer2 {
+#hold {
   display: none;
 }
 
