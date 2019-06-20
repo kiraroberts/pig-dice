@@ -5,85 +5,89 @@ function PigDiceGame() {
   this.players = []
 };
 
- // This is our OBJECT //
-function Player (tempScore, totalScore) {
-  this.tempScore = tempScore
-  this.totalScore = totalScore
+PigDiceGame.prototype.addPlayer = function (player) {
+  this.players.push(player)
+}
+
+
+// This is our PROPERTIES //
+var game1 = new PigDiceGame();
+var player1 = new Player(0, 0, "Player 1");
+var player2 = new Player(0, 0, "Player 2");
+game1.addPlayer(player1);
+game1.addPlayer(player2);
+
+// This is our OBJECT //
+function Player (tempScore, totalScore, playerId) {
+  this.tempScore = 0,
+  this.totalScore = 0,
+  this.playerId = playerId
+  this.turn = false;
 };
 
-// This is our PROPERTY (KEY-VALUE PAIR creates a PROPERTY)
-var player1 = new Player(0, 0);
-var player2 = new Player(0, 0);
+function showScore() {
+  var i = currentPlayer();
+  $('#current-player').text('Current Player: ' + game1.players[i].name);
+  $('span#tempScore').text('Round Score: ' + game1.players[i].tempScore);
+  $('span#totalScore').text('Total Score: ' + game1.players[i].totalScore)
+};
 
-// This is our PROTOTYPE //
-Player.prototype.roll1 = function() {
-  var diceDisplay = diceRollPlayer1(1,6);
-  if (diceDisplay === 1) {
-    this.tempScore = 0
-  } else {
-  this.tempScore += diceDisplay
-  // return diceDisplay
+function currentPlayer() {
+  for (i = 0; i < game1.players.length; i++) {
+    if (game1.players[i].turn === true) {
+      return i;
+    }
   }
-  $("#displaytempScore1").text(this.tempScore)
 };
 
-Player.prototype.roll2 = function() {
-  var diceDisplay = diceRollPlayer2(1,6);
-  if (diceDisplay === 1) {
-    this.tempScore = 0
+function switchPlayer(i) {
+  if (i >= game1.players.length - 1) {
+    i = 0;
   } else {
-  this.tempScore += diceDisplay
+    ++i;
+  };
+  return game1.players[i].turn = true;
+};
+
+function diceRoll(i) {
+  var result = parseInt(Math.random() * 6) + 1;
+  if (result === 1) {
+    game1.players[i].tempScore = 0;
+    game1.players[i].turn = false;
+    switchPlayer(i);
+  } else {
+    game1.players[i].tempScore += result;
   }
-  $("#displaytempScore2").text(this.tempScore)
 };
 
+function hold(i) {
+  addScore(i);
+  game1.players[i].turn = false;
+  switchPlayer(i);
+}
 
-function diceRollPlayer1(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
-};
-
-function diceRollPlayer2(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) ) + min;
-};
-
-// function() {
-// }
-
-// ------------ Front End --------- //
-
-
+function addScore(i) {
+  game1.players[i].totalScore += game1.players[i].tempScore;
+  game1.players[i].tempScore = 0;
+}
+      // ------------ Front End --------- //
 
 $(document).ready(function() {
-  $().submit(function(event) {
+  $("button#roll").submit(function(event) {
     event.preventDefault();
-    //
-    // $("#holdplayer1").click();
-    // if (player1.roll1 === 1) {
-    //   player1.tempScore = 0
-    // } else {
-    //   player1.tempScore += player1.totalScore
-    //   $("#displaytotalScore1").text(player1.totalScore)
-    //   console.log(player1);
-    // }
-    //
-    // $("#holdplayer2").click();
-    // } else {
-    //   player2.tempScore += player2.totalScore
-    //   $("#displaytotalScore2").text(player2.totalScore)
-    //   console.log(player2);
-    // }
+
   });
 
   $('.btnPlay').click(function() {
     $("#gameUIShow").show();
   });
 
-  $('#roll1').click(function() {
+  $('#roll').click(function() {
     $("#holdPlayer1").show();
   });
 
-  $('#roll2').click(function() {
-    $("#holdPlayer2").show();
-
+  $('button#hold').click(function( ) {
+    hold;
   });
+
 });

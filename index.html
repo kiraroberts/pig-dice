@@ -25,11 +25,9 @@
                 <h2 class="panel-title">Player 1</h2>
               </div>
               <div class="panel-body">
-                <button id="roll1" onclick="document.getElementById('diceResultPlayer1').innerHTML = player1.roll1()">Roll!</button>
-                <button id="holdPlayer1">Hold!</button><br><br>
-                <p>Die: <span id="diceResultPlayer1"></span></p>
-                <p>Current Turn Score: <span id="displaytempScore1"></span></p>
-                <p>Total Score: <span id="displaytotalScore1"></span></p>
+                <p>Die: <span id="diceRoll"></span></p>
+                <p>Current Turn Score: <span id="tempScore"></span></p>
+                <p>Total Score: <span id="totalScore"></span></p>
               </div>
             </div>
           </div>
@@ -42,16 +40,16 @@
                 <h2 class="panel-title">Player 2</h2>
               </div>
               <div class="panel-body">
-                <button id="roll2" onclick="document.getElementById('diceResultPlayer2').innerHTML = player2.roll2()">Roll!</button>
-                <button id="holdPlayer2">Hold!</button><br><br>
-                <p>Die: <span id="diceResultPlayer2"></p>
-                <p>Current Turn Score: <span id="displaytempScore2"></span></p>
-                <p>Total Score: <span id="displaytotalScore2"></span></p>
+                <p>Die: <span id="diceRoll"></p>
+                <p>Current Turn Score: <span id="tempScore"></span></p>
+                <p>Total Score: <span id="totalScore"></span></p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <button id="roll">Roll!</button>
+    <button id="hold">Hold!</button>
   </body>
 </html>
